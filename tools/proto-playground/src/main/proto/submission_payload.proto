@@ -16,4 +16,11 @@ message Key2 {
   int32 rollingStartNumber = 3;
   // Increments of 10 minutes describing how long a key is valid
   int32 rollingPeriod = 4;
+  repeated string visitedCountries = 5;
+  string origin = 6; // country of origin
+  VerificationType verificationType = 7; // set by backend
+}
+enum VerificationType {
+  LAB_VERIFIED = 0;
+  SELF_REPORTED = 1;
 }

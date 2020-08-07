@@ -4,10 +4,16 @@
 # - The period of time covered by the data file must not exceed 14 days.
 keys:
   - keyData: !protobinary "EKXAABBCCDEFGHIJ"
-    rollingStartNumber: 2650859
+    rollingStartNumber: 2660760
     rollingPeriod: 144
     transmissionRiskLevel: 4
+    visitedCountries: "FR"
+    origin: "DE"
+    verificationType: "LAB_VERIFIED"
   - keyData: !protobinary "FKXAABBCCDEFGHIJ"
-    rollingStartNumber: 2650715
+    rollingStartNumber: 2660616
     rollingPeriod: 144
     transmissionRiskLevel: 4
+    visitedCountries: "FR"
+    origin: "DE"
+    verificationType: "LAB_VERIFIED"
