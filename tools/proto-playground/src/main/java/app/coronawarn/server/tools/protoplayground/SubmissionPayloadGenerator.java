@@ -4,7 +4,6 @@ import app.coronawarn.server.tools.protoplayground.gen.Key2;
 import app.coronawarn.server.tools.protoplayground.gen.SubmissionPayload;
 import app.coronawarn.server.tools.protoplayground.gen.VerificationType;
 import com.google.protobuf.ByteString;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class SubmissionPayloadGenerator {
   public void getSubmissionPayload() throws IOException {
     List<Key2> keys = new ArrayList<>();
 
-    for (int i=0; i<14; i++){
+    for (int i = 0; i < 14; i++) {
       Key2.Builder key = Key2.newBuilder();
       key.setKeyData(ByteString.copyFrom(new byte[16]));
       key.setTransmissionRiskLevel(4);
