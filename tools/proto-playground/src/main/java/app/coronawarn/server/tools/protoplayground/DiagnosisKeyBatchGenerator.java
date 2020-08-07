@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DiagnosisKeyBatchGenerator {
   int numberOfKeys = 10;
@@ -23,8 +24,12 @@ public class DiagnosisKeyBatchGenerator {
     List<DiagnosisKey> keys = new ArrayList<>();
 
     for (int i = 0; i < numberOfKeys; i++) {
+      byte[] keyData = new byte[16];
+      Random random = new Random();
+      random.nextBytes(keyData);
+
       DiagnosisKey.Builder key = DiagnosisKey.newBuilder();
-      key.setKeyData(ByteString.copyFrom(new byte[16]));
+      key.setKeyData(ByteString.copyFrom(keyData));
       key.setTransmissionRiskLevel(4);
       key.setRollingStartIntervalNumber(2657865 + 144 * i);
       key.setRollingPeriod(144);
