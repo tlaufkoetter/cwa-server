@@ -5,6 +5,7 @@ option java_multiple_files = true;
 
 message SubmissionPayload {
   repeated Key2 keys = 1;
+  bytes padding = 2;
 }
 
 message Key2 {
