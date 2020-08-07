@@ -2,10 +2,14 @@ syntax = "proto3";
 package app.coronawarn.server.tools.protoplayground;
 option java_package = "app.coronawarn.server.tools.protoplayground.gen";
 option java_multiple_files = true;
+import "diagnosis_key_batch.proto";
 
 message SubmissionPayload {
   repeated Key2 keys = 1;
   bytes padding = 2;
+  repeated string visitedCountries = 3;
+  string origin = 4; // country of origin
+  VerificationType verificationType = 5; // set by backend
 }
 
 message Key2 {
@@ -17,11 +21,4 @@ message Key2 {
   int32 rollingStartNumber = 3;
   // Increments of 10 minutes describing how long a key is valid
   int32 rollingPeriod = 4;
-  repeated string visitedCountries = 5;
-  string origin = 6; // country of origin
-  VerificationType verificationType = 7; // set by backend
-}
-enum VerificationType {
-  LAB_VERIFIED = 0;
-  SELF_REPORTED = 1;
 }
