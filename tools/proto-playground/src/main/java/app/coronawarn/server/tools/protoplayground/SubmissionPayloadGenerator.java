@@ -1,8 +1,8 @@
 package app.coronawarn.server.tools.protoplayground;
 
 import app.coronawarn.server.tools.protoplayground.gen.Key2;
+import app.coronawarn.server.tools.protoplayground.gen.ReportType;
 import app.coronawarn.server.tools.protoplayground.gen.SubmissionPayload;
-import app.coronawarn.server.tools.protoplayground.gen.VerificationType;
 import com.google.protobuf.ByteString;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class SubmissionPayloadGenerator {
+
   int numberOfKeys = 10;
 
   public static void main(String[] args) throws IOException {
@@ -41,7 +42,7 @@ public class SubmissionPayloadGenerator {
     submissionPayload.setPadding(ByteString.copyFrom(new byte[1000]));
     submissionPayload.addAllVisitedCountries(List.of("DE", "FR"));
     submissionPayload.setOrigin("DE");
-    submissionPayload.setVerificationType(VerificationType.LAB_VERIFIED);
+    submissionPayload.setReportType(ReportType.CONFIRMED_CLINICAL_DIAGNOSIS);
 
     submissionPayload.build()
         .writeTo(new FileOutputStream("submission_payload.bin"));

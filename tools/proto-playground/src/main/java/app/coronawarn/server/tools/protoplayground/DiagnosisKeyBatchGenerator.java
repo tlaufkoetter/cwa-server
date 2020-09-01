@@ -2,9 +2,6 @@ package app.coronawarn.server.tools.protoplayground;
 
 import app.coronawarn.server.tools.protoplayground.gen.DiagnosisKey;
 import app.coronawarn.server.tools.protoplayground.gen.DiagnosisKeyBatch;
-import app.coronawarn.server.tools.protoplayground.gen.Key2;
-import app.coronawarn.server.tools.protoplayground.gen.SubmissionPayload;
-import app.coronawarn.server.tools.protoplayground.gen.VerificationType;
 import com.google.protobuf.ByteString;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,7 +28,7 @@ public class DiagnosisKeyBatchGenerator {
       DiagnosisKey.Builder key = DiagnosisKey.newBuilder();
       key.setKeyData(ByteString.copyFrom(keyData));
       key.setTransmissionRiskLevel(4);
-      key.setRollingStartIntervalNumber(2657865 + 144 * i);
+      key.setRollingStartIntervalNumber(2660474 + 144 * i);  // TODO epoch +/- 14 days / 600
       key.setRollingPeriod(144);
       key.addAllVisitedCountries(List.of("DE", "FR"));
       key.setOrigin("DE");

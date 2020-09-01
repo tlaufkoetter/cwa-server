@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 package app.coronawarn.server.tools.protoplayground;
 option java_package = "app.coronawarn.server.tools.protoplayground.gen";
 option java_multiple_files = true;
@@ -6,19 +6,20 @@ import "diagnosis_key_batch.proto";
 
 message SubmissionPayload {
   repeated Key2 keys = 1;
-  bytes padding = 2;
+  optional bytes padding = 2;
   repeated string visitedCountries = 3;
-  string origin = 4; // country of origin
-  VerificationType verificationType = 5; // set by backend
+  optional string origin = 4;
+  optional app.coronawarn.server.tools.protoplayground.ReportType reportType = 5 [default = CONFIRMED_CLINICAL_DIAGNOSIS];
+  optional bool consentToFederation = 6;
 }
 
 message Key2 {
   // Key of infected user
-  bytes keyData = 1;
+  optional bytes keyData = 1;
   // Varying risk associated with a key depending on diagnosis method
-  int32 transmissionRiskLevel = 2;
+  optional int32 transmissionRiskLevel = 2;
   // The interval number since epoch for which a key starts
-  int32 rollingStartNumber = 3;
+  optional int32 rollingStartNumber = 3;
   // Increments of 10 minutes describing how long a key is valid
-  int32 rollingPeriod = 4;
+  optional int32 rollingPeriod = 4;
 }
