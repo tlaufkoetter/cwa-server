@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class SubmissionPayloadGenerator {
 
-  int numberOfKeys = 10;
+  int numberOfKeys = 5;
 
   public static void main(String[] args) throws IOException {
     SubmissionPayloadGenerator submissionPayloadGenerator = new SubmissionPayloadGenerator();
@@ -31,8 +31,8 @@ public class SubmissionPayloadGenerator {
       Key2.Builder key = Key2.newBuilder();
       key.setKeyData(ByteString.copyFrom(keyData));
       key.setTransmissionRiskLevel(4);
-      key.setRollingStartNumber(2657865 + 144 * i);
-      key.setRollingPeriod(144);
+      key.setRollingStartNumber((1598486400/600) + (24*60/10) * i);
+      key.setRollingPeriod(24*60/10);
 
       keys.add(key.build());
     }
@@ -45,6 +45,6 @@ public class SubmissionPayloadGenerator {
     submissionPayload.setReportType(ReportType.CONFIRMED_CLINICAL_DIAGNOSIS);
 
     submissionPayload.build()
-        .writeTo(new FileOutputStream("submission_payload.bin"));
+        .writeTo(new FileOutputStream("5keys.bin"));
   }
 }
